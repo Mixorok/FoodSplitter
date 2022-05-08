@@ -47,6 +47,11 @@ class MainInteractor {
         model.saveDeliveryPrice(price)
     }
     
+    func isReadyForReceipt() -> Bool {
+        //TODO: STill in progress
+        fatalError()
+    }
+    
     func createPersons() {
 //        print("COUNTPERSONS ==>", userPlaceholderModel.names.count)
 //        for name in userPlaceholderModel.names {

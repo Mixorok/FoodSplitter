@@ -23,7 +23,7 @@ struct ReceiptView: View {
                     Spacer()
                     Text("Price")
                     Spacer()
-                    Text("Finally")
+                    Text("Totall")
                 }
                 Divider()
                 
@@ -31,13 +31,24 @@ struct ReceiptView: View {
                     HStack(spacing: 16) {
                         Text(person.name)
                         Spacer()
-                        Text("22")
+                        Text("\(person.price.formattedMoney) + \(presenter.getDeliveryPriceForPerson())")
                         Spacer()
-                        Text("\(person.price)")
+                        Text("\(presenter.calculateTotalPrice(for: person))")
                     }
                 }
+                .padding(.bottom, 18)
                 
                 Spacer()
+                
+                Button {
+                    presenter.copyToClipboard()
+                } label: {
+                    Text("Coppy")
+                        .padding(.vertical, 4)
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+
             }
             .padding(.horizontal, 16)
             .padding(.top, 16)
@@ -52,5 +63,12 @@ struct ReceiptView_Previews: PreviewProvider {
         fakeModel.persons = [Person(name: "Maks", price: 20.2), Person(name: "Igor", price: 19.2)]
         
         return ReceiptView(presenter: ReceiptPresenter(interactor: ReceiptInteractor(model: fakeModel)))
+    }
+}
+
+private extension Double {
+    
+    var formattedMoney: String {
+        self.formatted(.number.precision(.fractionLength(2)))
     }
 }

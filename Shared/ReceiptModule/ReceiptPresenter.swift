@@ -15,4 +15,16 @@ class ReceiptPresenter: ObservableObject {
     func getNameOfEvent() -> String {
         interactor.getNameOfEvent()
     }
+    
+    func getDeliveryPriceForPerson() -> String {
+        interactor.getDeliveryPriceForPerson()
+    }
+    
+    func calculateTotalPrice(for person: Person) -> String  {
+        interactor.calculateTotalPrice(for: person)
+    }
+    
+    func copyToClipboard() {
+        interactor.copyToClipboard()
+    }
 }

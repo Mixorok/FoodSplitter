@@ -45,8 +45,6 @@ public struct MainView: View {
                     .multilineTextAlignment(.center)
                     .keyboardType(.decimalPad)
                     .frame(maxWidth: 126)
-//                    TextField("Delivery", text: $delivery)
-//                        .frame(maxWidth: 70)
                     Button(action: {
                         presenter.createPersons()
                         routeToReceipt = true
